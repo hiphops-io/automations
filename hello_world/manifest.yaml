@@ -7,14 +7,14 @@ tags:
   - tutorial
   - greetings
 required_apps:
-  - github
+  - slack
 steps:
   - title: Alright. Let's run your first automation!
-    instructions: Step 1 instructions
+    instructions: This one requires Slack to be connected. Go set it up in your account (takes a few clicks).
     emoji: ⚡️
-  - title: Nice. Now, let's do X.
-    instructions: Step 2 instructions
+  - title: Nice. Now let's run it.
+    instructions: Type your greeting into the task form and submit.
+    emoji: 🚀
+  - title: Check Slack /#random
+    instructions: You should see you've sent a greeting in Slack. Now let's build something useful. Check the new automations section for templates to get you started!
     emoji: 🔥
-  - title: Nice. Now, its time for more things.
-    instructions: Step 3 instructions
-    emoji: 🎁
