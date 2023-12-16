@@ -1,0 +1,20 @@
+---
+schema_version: v1.0
+version: v0.1
+name: Hello World
+emoji: 🌎
+tags:
+  - tutorial
+  - greetings
+required_apps:
+  - github
+steps:
+  - title: Alright. Let's run your first automation!
+    instructions: Step 1 instructions
+    emoji: ⚡️
+  - title: Nice. Now, let's do X.
+    instructions: Step 2 instructions
+    emoji: 🔥
+  - title: Nice. Now, its time for more things.
+    instructions: Step 3 instructions
+    emoji: 🎁

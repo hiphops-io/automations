@@ -1,0 +1,13 @@
+task say_hello {
+  emoji = "👋"
+  param greeting {required=true}
+}
+
+on task_say_hello {
+  call slack_post_message {
+    inputs = {
+      channel = "random"
+      text = "${event.greeting} World!"
+    }
+  }
+}
