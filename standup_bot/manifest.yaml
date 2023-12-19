@@ -1,0 +1,31 @@
+---
+schema_version: v1.0
+version: v0.1
+name: Slack Standup Bot
+emoji: 💬
+tags:
+  - development
+  - productivity
+required_apps:
+  - slack
+steps:
+  - title: Setup
+    instructions: |
+      This automation requires a `HIPHOPS_CONSOLE_URL` env var, so you'll need to set that.
+      e.g. `export HIPHOPS_CONSOLE_URL=http://127.0.0.1:8916/console/`
+    emoji: 🔧
+  - title: What it does | Scheduled reminders for standup
+    instructions: |
+      This automation creates a schedule that will send reminders to the Slack channel #standup for team members to post a standup update.
+      Reminders are sent at 9am and 10am for a standup at 10:10am. You can edit these times in the main.hops file.
+    emoji: ⏰
+  - title: What it does | Gather standups
+    instructions: |
+      The reminders will include a link to a task form where team members can submit their standup updates.
+      You can customise this form in the `task` block of the main.hops file.
+    emoji: 📋
+  - title: What it does | Posts the updates
+    instructions: |
+      Submitted standups will be posted back to the #standup channel. Nice!
+    emoji: 💬
+

@@ -1,0 +1,116 @@
+schedule standup {
+  cron = "23 1 * * 1-5"
+}
+
+on schedule_standup {
+  call k8s_run {
+    name = "timestamp"
+
+    inputs = {
+      image = "bash"
+      command = [
+        "bash",
+        "-c",
+        <<-BASH
+        ASK=$(date '+%Y-%m-%d 09:00:00')
+        ASK_TS=$(TZ=Europe/London date -d "$ASK" +%s)
+
+        REMIND=$(date '+%Y-%m-%d 10:00:00')
+        REMIND_TS=$(TZ=Europe/London date -d "$REMIND" +%s)
+
+        echo "{\"ask\": $ASK_TS, \"remind\": $REMIND_TS}" > /output/result.json
+        BASH
+      ]
+    }
+  }
+
+  call slack_api {
+    if = timestamp.completed
+
+    inputs = {
+      method = "POST"
+      path = "chat.scheduleMessage"
+      json = {
+        channel = "standup"
+        text = <<-MSG
+        <!here> Standups are due by 10:10am, folks!
+        
+        Submit your update <${env("HIPHOPS_CONSOLE_URL", "")}submit_standup|here>
+        MSG
+        post_at = timestamp.json.ask
+      }
+    }
+  }
+
+  call slack_api {
+    if = timestamp.completed
+
+    inputs = {
+      method = "POST"
+      path = "chat.scheduleMessage"
+      json = {
+        channel = "standup"
+        text = <<-MSG
+        <!here> Standups are due in 10 minutes!
+        
+        Submit your update <${env("HIPHOPS_CONSOLE_URL", "")}submit_standup|here>
+        MSG
+        post_at = timestamp.json.remind
+      }
+    }
+  }
+}
+
+task submit_standup {
+  description = <<-EOT
+  Submit your standup.
+
+  Include links to tickets where applicable
+  EOT
+  emoji = "🫡"
+
+  param name {
+    required = true
+    help = "Your name"
+  }
+
+  param yesterday {
+    type = "text"
+    required = true
+    help = "What did you work on yesterday?"
+  }
+
+  param today {
+    type = "text"
+    required = true
+    help = "What do you plan to do today?"
+  }
+
+  param blockers {
+    type = "text"
+    help = "Any blockers?"
+  }
+}
+
+on task_submit_standup {
+  call slack_post_message {
+    inputs = {
+      channel = "standup"
+      text = <<-MSG
+        *${event.name}'s standup:* :wave:
+
+        *Yesterday:*
+
+        ${event.yesterday}
+
+        *Today:*
+
+        ${event.today}
+
+        *Blockers:*
+
+        ${try(event.blockers, "N/A")}
+      MSG
+    }
+  }
+}
