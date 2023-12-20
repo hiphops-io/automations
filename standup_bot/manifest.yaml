@@ -2,6 +2,7 @@
 schema_version: v1.0
 version: v0.1
 name: Slack Standup Bot
+description: Create a standup bot in less than 5 minutes. This automation reminds your team to submit their standups daily, creates a UI for them to input their updates and posts each team members update to a channel! You can customise everything via the main.hops file. 
 emoji: 💬
 tags:
   - development
