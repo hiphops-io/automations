@@ -7,7 +7,6 @@ emoji: 🌎
 tags:
   - tutorial
   - greetings
-required_apps:
 steps:
   - title: Alright. Let's run your first automation!
     instructions: This one requires Slack to be connected. Go set it up in your account (takes a few clicks).
