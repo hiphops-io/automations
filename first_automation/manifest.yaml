@@ -4,6 +4,10 @@ version: v0.1
 name: My First Automation
 description: Alright! Let's start by creating a simple automation that takes a greeting via a task and posts it to Slack.
 emoji: 🌎
+required_apps:
+  - Slack
+  - Notion
+  - Airtable
 tags:
   - tutorial
   - greetings
