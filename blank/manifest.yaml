@@ -5,5 +5,11 @@ name: Blank template
 description: This is an empty template so you can start from scratch! The world is your oyster.
 emoji: 🦪
 tags:
+  - blank
 required_apps:
+  - None
 steps:
+  - title: Do your thing
+    instructions: |
+      No instructions
+    emoji: 💬
