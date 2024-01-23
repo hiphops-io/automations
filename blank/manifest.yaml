@@ -3,13 +3,6 @@ schema_version: v1.0
 version: v0.1
 name: Blank template
 description: This is an empty template so you can start from scratch! The world is your oyster.
-emoji: 🦪
+emoji: 📋
 tags:
   - blank
-required_apps:
-  - None
-steps:
-  - title: Do your thing
-    instructions: |
-      No instructions
-    emoji: 💬
