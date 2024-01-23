@@ -5,9 +5,7 @@ name: My First Automation
 description: Alright! Let's start by creating a simple automation that takes a greeting via a task and posts it to Slack.
 emoji: 🌎
 required_apps:
-  - Slack
-  - Notion
-  - Airtable
+  - slack
 tags:
   - tutorial
   - greetings
@@ -18,6 +16,6 @@ steps:
   - title: Nice. Now let's run it.
     instructions: Type your greeting into the task form and submit.
     emoji: 🚀
-  - title: Check Slack /#random
+  - title: "Check Slack #random"
     instructions: You should see you've sent a greeting in Slack. Now let's build something useful. Check the new automations section for templates to get you started!
     emoji: 🔥
