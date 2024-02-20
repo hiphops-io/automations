@@ -6,6 +6,7 @@ description: Alright! Let's start by creating a simple automation that takes a g
 emoji: 🌎
 required_apps:
   - slack
+  - github
 tags:
   - tutorial
   - greetings
